@@ -5,9 +5,9 @@ import com.example.meetingapp.Meetings
 import com.example.meetingapp.TemplateCustomOptions
 import com.example.meetingapp.TemplateWithTemplateOptions
 import com.example.meetingapp.Templates
-import com.example.meetingapp.database.MeetingDatabase
+//import com.example.meetingapp.database.MeetingDatabase
 
-class MeetingRepository(private val db: MeetingDatabase) {
+/*class MeetingRepository(private val db: MeetingDatabase) {
     suspend fun insertMeeting(meetings: Meetings) = db.getMeetingDoa().insertMeeting(meetings)
     suspend fun insertCustomOption(customOptions: CustomOptions) = db.getMeetingDoa().insertCustomOption(customOptions)
     suspend fun insertTemplate(templates: Templates) = db.getTemplateDao().insertTemplate(templates)
@@ -27,4 +27,4 @@ class MeetingRepository(private val db: MeetingDatabase) {
     fun getAllCustomOptions() = db.getMeetingDoa().getAllCustomOptions()
     fun getAllTemplates() = db.getTemplateDao().getAllTemplates()
     fun getAllTemplatesOptions() = db.getTemplateDao().getAllTemplateOptions()
-}
+}*/
