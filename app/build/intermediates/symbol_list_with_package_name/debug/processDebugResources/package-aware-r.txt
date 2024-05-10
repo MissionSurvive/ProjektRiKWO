@@ -3075,6 +3075,11 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable outline_add_black_24
+drawable outline_close_black_24
+drawable outline_done_black_24
+drawable outline_menu_black_24
+drawable outline_more_vert_black_24
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -3082,6 +3087,7 @@ id ALT
 id BOTTOM_END
 id BOTTOM_START
 id CTRL
+id ExtendedFloatingActionButton
 id FUNCTION
 id META
 id NO_DEBUG
@@ -3181,6 +3187,7 @@ id cache_measures
 id callMeasure
 id cancel_button
 id carryVelocity
+id categoryLinear
 id center
 id centerCrop
 id centerInside
@@ -3204,7 +3211,9 @@ id confirm_button
 id constraint
 id container
 id content
+id contentInputEditText
 id contentPanel
+id contentTextInputLayout
 id contiguous
 id continuousVelocity
 id coordinator
@@ -3222,6 +3231,8 @@ id decor_content_parent
 id default_activity_button
 id deltaRelative
 id dependency_ordering
+id descriptionInputEditText
+id descriptionTextInputLayout
 id design_bottom_sheet
 id design_menu_item_action_area
 id design_menu_item_action_area_stub
@@ -3235,6 +3246,7 @@ id disableIntraAutoTransition
 id disablePostScroll
 id disableScroll
 id disjoint
+id done
 id dragAnticlockwise
 id dragClockwise
 id dragDown
@@ -3254,12 +3266,15 @@ id edit_text_id
 id elastic
 id embed
 id end
+id endInputEditText
+id endTextInputLayout
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id extraOptionsRecyclerView
 id fade
 id fill
 id fill_horizontal
@@ -3293,6 +3308,7 @@ id homeAsUp
 id honorRequest
 id horizontal_only
 id icon
+id iconButton
 id icon_group
 id ifRoom
 id ignore
@@ -3354,6 +3370,7 @@ id month_navigation_fragment_toggle
 id month_navigation_next
 id month_navigation_previous
 id month_title
+id more
 id motion_base
 id mtrl_anchor_parent
 id mtrl_calendar_day_selector_frame
@@ -3379,6 +3396,8 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id nameInputEditText
+id nameTextInputLayout
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
 id navigation_bar_item_icon_view
@@ -3497,6 +3516,8 @@ id src_over
 id standard
 id start
 id startHorizontal
+id startInputEditText
+id startTextInputLayout
 id startToEnd
 id startVertical
 id staticLayout
@@ -3542,6 +3563,8 @@ id titleDividerNoCustom
 id title_template
 id toggle
 id top
+id topAppBar
+id topAppBarMaterials
 id topPanel
 id touch_outside
 id transitionToEnd
@@ -3689,6 +3712,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_event_add
 layout activity_main
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -3706,6 +3730,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout extra_options_list_view
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout m3_alert_dialog
@@ -3769,6 +3794,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+menu event_add_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description

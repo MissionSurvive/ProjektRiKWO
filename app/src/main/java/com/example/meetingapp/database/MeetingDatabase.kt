@@ -8,7 +8,7 @@ import com.example.meetingapp.CustomOptions
 import com.example.meetingapp.Meetings
 import com.example.meetingapp.TemplateCustomOptions
 import com.example.meetingapp.Templates
-
+/*
 @Database(entities = [Meetings::class, CustomOptions::class, Templates::class, TemplateCustomOptions::class], version = 1)
 abstract class MeetingDatabase : RoomDatabase(){
 
@@ -36,3 +36,5 @@ abstract class MeetingDatabase : RoomDatabase(){
             ).build()
     }
 }
+
+*/
