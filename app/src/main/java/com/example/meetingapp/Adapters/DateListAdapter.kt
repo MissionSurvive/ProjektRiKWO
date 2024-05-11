@@ -10,15 +10,7 @@ import com.example.meetingapp.Items.DateItem
 import com.example.meetingapp.Items.MeetingItem
 import com.example.meetingapp.R
 
-class DateListAdapter(private val dateItems: List<DateItem>) : RecyclerView.Adapter<DateListAdapter.DateViewHolder>() {
-
-    private val meetingItems = listOf(
-        MeetingItem("Meeting with John"),
-        MeetingItem("Team Meeting"),
-        MeetingItem("Client Meeting"),
-        MeetingItem("Project Discussion"),
-        MeetingItem("Weekly Review"),
-    )
+class DateListAdapter(private val dateItems: List<DateItem>, private val meetings: List<Pair<DateItem, List<MeetingItem>>>) : RecyclerView.Adapter<DateListAdapter.DateViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DateViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.meetings_list_view, parent, false)
@@ -29,7 +21,7 @@ class DateListAdapter(private val dateItems: List<DateItem>) : RecyclerView.Adap
         val dateItem = dateItems[position]
         holder.bind(dateItem)
 
-        val meetingAdapter = MeetingListAdapter(meetingItems)
+        val meetingAdapter = MeetingListAdapter(meetings[position].second)
         holder.meetingRecyclerView.adapter = meetingAdapter
         holder.meetingRecyclerView.layoutManager = LinearLayoutManager(holder.itemView.context)
     }
@@ -41,7 +33,7 @@ class DateListAdapter(private val dateItems: List<DateItem>) : RecyclerView.Adap
         val meetingRecyclerView: RecyclerView = itemView.findViewById(R.id.meeting_list_item)
 
         fun bind(dateItem: DateItem) {
-            textView.text = "${dateItem.day} ${dateItem.month}"
+            textView.text = dateItem.month
         }
     }
 }

@@ -13,16 +13,9 @@ import com.example.meetingapp.Items.MeetingItem
 
 
 class MonthViewActivity : AppCompatActivity() {
-    var calendarView: CalendarView? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
-
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_month_view)
-
-        calendarView = findViewById(R.id.calendarView)
     }
 }

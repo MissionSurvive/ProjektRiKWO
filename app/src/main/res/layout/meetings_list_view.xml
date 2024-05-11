@@ -16,7 +16,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:layout_weight="1"
-        android:text="1 sty"
+        android:text="Styczeń"
         android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
     <androidx.recyclerview.widget.RecyclerView

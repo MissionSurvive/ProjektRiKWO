@@ -8,26 +8,39 @@
     android:layout_marginBottom="4dp"
     >
 
-    <TextView
-        android:id="@+id/text"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:orientation="vertical"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:layout_gravity="center"
-        android:text="Nazwa spotkania"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"/>
+        >
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Data spotkania"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"/>
+
+        <TextView
+            android:id="@+id/nameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nazwa spotkania"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"/>
+
+    </LinearLayout>
 
     <Button
-        style="?attr/materialIconButtonStyle"
         android:id="@+id/iconButton"
+        style="?attr/materialIconButtonStyle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginEnd="24dp"
-        app:icon="@drawable/outline_close_black_24"
-        />
+        app:icon="@drawable/outline_close_black_24" />
 
 </LinearLayout>
