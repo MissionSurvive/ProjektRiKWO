@@ -4,12 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.meetingapp.Converters.Converters
 import com.example.meetingapp.CustomOptions
 import com.example.meetingapp.Meetings
 import com.example.meetingapp.TemplateCustomOptions
 import com.example.meetingapp.Templates
 
-@Database(entities = [Meetings::class, CustomOptions::class, Templates::class, TemplateCustomOptions::class], version = 1)
+@Database(entities = [Meetings::class, CustomOptions::class, Templates::class, TemplateCustomOptions::class], version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class MeetingDatabase : RoomDatabase(){
 
     abstract fun getMeetingDoa(): MeetingDao
