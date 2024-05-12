@@ -36,6 +36,10 @@
         "source": "C:\\Users\\adami\\.gradle\\daemon\\8.4\\com.example.meetingapp-main-48:\\drawable\\ic_launcher_foreground.xml"
     },
     {
+        "merged": "C:\\Users\\adami\\.gradle\\daemon\\8.4\\com.example.meetingapp-debug-46:\\drawable_outline_add_black_24.png.flat",
+        "source": "C:\\Users\\adami\\.gradle\\daemon\\8.4\\com.example.meetingapp-main-48:\\drawable\\outline_add_black_24.png"
+    },
+    {
         "merged": "C:\\Users\\adami\\.gradle\\daemon\\8.4\\com.example.meetingapp-debug-46:\\mipmap-hdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\adami\\.gradle\\daemon\\8.4\\com.example.meetingapp-main-48:\\mipmap-hdpi\\ic_launcher.webp"
     },
@@ -46,10 +50,6 @@
     {
         "merged": "C:\\Users\\adami\\.gradle\\daemon\\8.4\\com.example.meetingapp-debug-46:\\mipmap-anydpi_ic_launcher.xml.flat",
         "source": "C:\\Users\\adami\\.gradle\\daemon\\8.4\\com.example.meetingapp-main-48:\\mipmap-anydpi\\ic_launcher.xml"
-    },
-    {
-        "merged": "com.example.meetingapp-debug-46:/layout_activity_event_add.xml.flat",
-        "source": "com.example.meetingapp-main-48:/layout/activity_event_add.xml"
     },
     {
         "merged": "C:\\Users\\adami\\.gradle\\daemon\\8.4\\com.example.meetingapp-debug-46:\\mipmap-anydpi_ic_launcher_round.xml.flat",
@@ -68,8 +68,8 @@
         "source": "C:\\Users\\adami\\.gradle\\daemon\\8.4\\com.example.meetingapp-main-48:\\drawable\\outline_close_black_24.png"
     },
     {
-        "merged": "com.example.meetingapp-debug-46:/drawable_outline_add_black_24.png.flat",
-        "source": "com.example.meetingapp-main-48:/drawable/outline_add_black_24.png"
+        "merged": "com.example.meetingapp-debug-46:/layout_event_add_dialog.xml.flat",
+        "source": "com.example.meetingapp-main-48:/layout/event_add_dialog.xml"
     },
     {
         "merged": "C:\\Users\\adami\\.gradle\\daemon\\8.4\\com.example.meetingapp-debug-46:\\layout_extra_options_list_view.xml.flat",

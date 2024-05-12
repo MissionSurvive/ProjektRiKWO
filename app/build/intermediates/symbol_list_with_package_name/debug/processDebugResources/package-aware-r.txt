@@ -3087,7 +3087,6 @@ id ALT
 id BOTTOM_END
 id BOTTOM_START
 id CTRL
-id ExtendedFloatingActionButton
 id FUNCTION
 id META
 id NO_DEBUG
@@ -3274,6 +3273,7 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id extendedFloatingActionButton
 id extraOptionsRecyclerView
 id fade
 id fill
@@ -3730,6 +3730,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout event_add_dialog
 layout extra_options_list_view
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity

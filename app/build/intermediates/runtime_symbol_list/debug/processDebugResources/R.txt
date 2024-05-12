@@ -3086,7 +3086,6 @@ int id ALT 0x7f080000
 int id BOTTOM_END 0x7f080001
 int id BOTTOM_START 0x7f080002
 int id CTRL 0x7f080003
-int id ExtendedFloatingActionButton 0x7f080202
 int id FUNCTION 0x7f080004
 int id META 0x7f080005
 int id NO_DEBUG 0x7f080006
@@ -3273,6 +3272,7 @@ int id enterAlwaysCollapsed 0x7f0800b2
 int id exitUntilCollapsed 0x7f0800b3
 int id expand_activities_button 0x7f0800b4
 int id expanded_menu 0x7f0800b5
+int id extendedFloatingActionButton 0x7f080203
 int id extraOptionsRecyclerView 0x7f080200
 int id fade 0x7f0800b6
 int id fill 0x7f0800b7
@@ -3729,6 +3729,7 @@ int layout design_navigation_menu 0x7f0b0029
 int layout design_navigation_menu_item 0x7f0b002a
 int layout design_text_input_end_icon 0x7f0b002b
 int layout design_text_input_start_icon 0x7f0b002c
+int layout event_add_dialog 0x7f0b006e
 int layout extra_options_list_view 0x7f0b006d
 int layout ime_base_split_test_activity 0x7f0b002d
 int layout ime_secondary_split_test_activity 0x7f0b002e

@@ -1,6 +1,6 @@
 package com.example.meetingapp.repository
 
-/*
+
 
 import com.example.meetingapp.CustomOptions
 import com.example.meetingapp.Meetings
@@ -30,4 +30,3 @@ class MeetingRepository(private val db: MeetingDatabase) {
     fun getAllTemplates() = db.getTemplateDao().getAllTemplates()
     fun getAllTemplatesOptions() = db.getTemplateDao().getAllTemplateOptions()
 }
-*/

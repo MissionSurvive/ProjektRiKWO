@@ -75,6 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:hint="DD/MM/YY HH:MM"
             app:endIconMode="custom"
             style="?attr/textInputOutlinedStyle">
 
@@ -82,7 +83,7 @@
                 android:id="@+id/startInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="datetime"
+                android:inputType="none"
                 android:maxLines="1"
                 />
         </com.google.android.material.textfield.TextInputLayout>
@@ -92,6 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:hint="DD/MM/YY HH:MM"
                 app:endIconMode="custom"
                 style="?attr/textInputOutlinedStyle">
 
@@ -99,7 +101,7 @@
                     android:id="@+id/endInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="datetime"
+                    android:inputType="none"
                     android:maxLines="1"
                     />
             </com.google.android.material.textfield.TextInputLayout>
