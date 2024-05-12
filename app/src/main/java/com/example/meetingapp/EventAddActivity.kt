@@ -281,5 +281,8 @@ class EventAddActivity : AppCompatActivity() {
                 else -> false
             }
         }
+        topAppBar.setNavigationOnClickListener {
+            finish()
+        }
     }
 }

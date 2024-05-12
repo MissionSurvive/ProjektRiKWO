@@ -19,7 +19,7 @@
             app:title="Dodawanie wydarzenia"
             app:subtitleCentered="false"
             app:menu="@menu/event_add_menu"
-            app:navigationIcon="@drawable/outline_menu_black_24" />
+            app:navigationIcon="@drawable/outline_close_black_24" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
