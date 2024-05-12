@@ -14,7 +14,7 @@ import com.example.meetingapp.MeetingsWithCustomOptions
 @Dao
 interface MeetingDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertMeeting(meetings: Meetings)
+    suspend fun insertMeeting(meetings: Meetings): Long
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertCustomOption(customOptions: CustomOptions)

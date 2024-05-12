@@ -8,5 +8,5 @@ data class CustomOptions(
     @PrimaryKey(autoGenerate = true) val optionId: Int,
     val optionKey: String,
     var optionValue: String,
-    val meetingId: Int
+    var meetingId: Int
 )

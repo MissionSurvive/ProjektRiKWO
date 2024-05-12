@@ -7,11 +7,20 @@ import android.widget.CheckBox
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.meetingapp.ViewModels.MeetingViewModel
+import com.example.meetingapp.ViewModels.ViewModelFactory
 import com.example.meetingapp.adapters.ExtraOptionsListAdapter
+import com.example.meetingapp.database.MeetingDatabase
+import com.example.meetingapp.repository.MeetingRepository
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.CalendarConstraints.DateValidator
+import com.google.android.material.datepicker.CompositeDateValidator
+import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -19,9 +28,17 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
+import kotlinx.coroutines.launch
 import java.util.Date
 
 class EventAddActivity : AppCompatActivity() {
+
+    private val viewModel: MeetingViewModel by lazy{
+        ViewModelProvider(
+            this,
+            ViewModelFactory(MeetingRepository(MeetingDatabase.invoke(this)))
+        ).get(MeetingViewModel::class.java)
+    }
 
     var startDateSelection: Long = 0
     var endDateSelection: Long = 0
@@ -33,7 +50,6 @@ class EventAddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_event_add)
-
 
 
         val topAppBar: MaterialToolbar = findViewById(R.id.topAppBarMaterials)
@@ -56,9 +72,23 @@ class EventAddActivity : AppCompatActivity() {
 
         startDateInput.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
-            val constraintsBuilder =
-                CalendarConstraints.Builder()
-                    .setValidator(DateValidatorPointForward.now())
+                val constraintsBuilder: CalendarConstraints.Builder
+                if (endUnixTime == 0L)  {
+                    constraintsBuilder =
+                        CalendarConstraints.Builder()
+                            .setValidator(DateValidatorPointForward.now())
+                }
+                else {
+                    val listValidators: ArrayList<DateValidator> = ArrayList()
+                    listValidators.apply {
+                        add(DateValidatorPointForward.now())
+                        add(DateValidatorPointBackward.before(endDateSelection))
+                    }
+                    val validators = CompositeDateValidator.allOf(listValidators)
+                    constraintsBuilder =
+                        CalendarConstraints.Builder()
+                            .setValidator(validators)
+                }
             val datePicker =
                 MaterialDatePicker.Builder.datePicker()
                     .setTitleText("Wybierz datę")
@@ -80,6 +110,8 @@ class EventAddActivity : AppCompatActivity() {
                     MaterialTimePicker.Builder()
                         .setTimeFormat(TimeFormat.CLOCK_24H)
                         .setTitleText("Wybierz czas")
+                        .setNegativeButtonText("Anuluj")
+                        .setPositiveButtonText("Potwierdź")
                         .build()
 
                 timePicker.show(supportFragmentManager, "timePicker")
@@ -113,9 +145,17 @@ class EventAddActivity : AppCompatActivity() {
 
         endDateInput.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
-                val constraintsBuilder =
-                    CalendarConstraints.Builder()
-                        .setValidator(DateValidatorPointForward.from(startDateSelection))
+                val constraintsBuilder: CalendarConstraints.Builder
+                if (startUnixTime == 0L) {
+                    constraintsBuilder =
+                        CalendarConstraints.Builder()
+                            .setValidator(DateValidatorPointForward.now())
+                }
+                else {
+                    constraintsBuilder =
+                        CalendarConstraints.Builder()
+                            .setValidator(DateValidatorPointForward.from(startDateSelection))
+                }
                 val datePicker =
                     MaterialDatePicker.Builder.datePicker()
                         .setTitleText("Wybierz datę")
@@ -179,7 +219,7 @@ class EventAddActivity : AppCompatActivity() {
                     val optionNameTextField: TextInputEditText = dialogInside.findViewById(R.id.nameInputEditText)
                     val optionContentTextField: TextInputEditText = dialogInside.findViewById(R.id.contentInputEditText)
 
-                    if (!optionContentTextField.text.isNullOrEmpty() || !optionNameTextField.text.isNullOrEmpty()) {
+                    if (!optionContentTextField.text.isNullOrEmpty() && !optionNameTextField.text.isNullOrEmpty()) {
                         extraOptions.add(CustomOptions(0, optionNameTextField.text.toString(), optionContentTextField.text.toString(), 0))
                         extraOptionsAdapter.submitList(extraOptions)
                         extraOptionsAdapter.notifyItemInserted(extraOptions.size - 1)
@@ -197,21 +237,41 @@ class EventAddActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.done -> {
 
-                    if (nameInput.text.isNullOrEmpty() || startUnixTime == 0L || endUnixTime == 0L) {
+                    if (nameInput.text.isNullOrEmpty() || startUnixTime == 0L || endUnixTime == 0L || extraOptionsAdapter.isTextEmpty) {
                         Toast.makeText(this, "Wszystkie pola poza opisem wydarzenia muszą być wypełnione.", Toast.LENGTH_SHORT).show()
                     }
                     else {
-                        val meeting: Meetings
+                        var meeting: Meetings
                         if (descriptionInput.text.isNullOrEmpty()) {
-                            meeting = Meetings(0, nameInput.text.toString(), "null", Date(startUnixTime), (startUnixTime-endUnixTime).toInt(), checkBox.isChecked)
+                            meeting = Meetings(
+                                0,
+                                nameInput.text.toString(),
+                                "null",
+                                Date(startUnixTime),
+                                (endUnixTime - startUnixTime).toInt(),
+                                checkBox.isChecked
+                            )
+                        } else {
+                            meeting = Meetings(
+                                0,
+                                nameInput.text.toString(),
+                                descriptionInput.text.toString(),
+                                Date(startUnixTime),
+                                (endUnixTime - startUnixTime).toInt(),
+                                checkBox.isChecked
+                            )
                         }
-                        else {
-                            meeting = Meetings(0, nameInput.text.toString(), descriptionInput.text.toString(), Date(startUnixTime), (startUnixTime-endUnixTime).toInt(), checkBox.isChecked)
-                            null
+
+                        lifecycleScope.launch {
+                            viewModel.addMeeting(meeting).await()
+                            val meetingId = viewModel.returnedId
+                            for (extraOption in extraOptions) {
+                                extraOption.meetingId = meetingId.toInt()
+                                viewModel.addCustomOption(extraOption)
+                            }
                         }
                         finish()
                     }
-
                     true
                 }
                 R.id.more -> {

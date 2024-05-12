@@ -8,6 +8,8 @@ import com.example.meetingapp.viewHolders.ExtraOptionViewHolder
 
 class ExtraOptionsListAdapter(extraOptions: MutableList<CustomOptions>) : ListAdapter<CustomOptions, ExtraOptionViewHolder>(OptionsComparator()) {
     val extraOptions = extraOptions
+    var isTextEmpty: Boolean = false
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExtraOptionViewHolder {
         return ExtraOptionViewHolder.create(parent)
     }
@@ -21,8 +23,13 @@ class ExtraOptionsListAdapter(extraOptions: MutableList<CustomOptions>) : ListAd
         }
         holder.nameTextInputEditText.doOnTextChanged { text, start, before, count ->
             if(!text.isNullOrEmpty()) {
-                extraOptions.get(position).optionValue = text.toString()
+                isTextEmpty = false
+                extraOptions[position].optionValue = text.toString()
             }
+            else {
+                isTextEmpty = true
+            }
+
         }
     }
 
