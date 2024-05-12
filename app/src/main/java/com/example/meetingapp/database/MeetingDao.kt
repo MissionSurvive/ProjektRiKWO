@@ -25,7 +25,7 @@ interface MeetingDao {
     suspend fun updateCustomOption(customOptions: CustomOptions)
 
     @Delete
-    suspend fun deleteMeeing(meetings: Meetings)
+    suspend fun deleteMeeting(meetings: Meetings)
 
     @Delete
     suspend fun deleteCustomOption(customOptions: CustomOptions)

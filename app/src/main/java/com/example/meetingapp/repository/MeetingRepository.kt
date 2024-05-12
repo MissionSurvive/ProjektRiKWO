@@ -20,7 +20,7 @@ class MeetingRepository(private val db: MeetingDatabase) {
     suspend fun updateTemplate(templates: Templates) = db.getTemplateDao().updateTemplate(templates)
     suspend fun updateTemplateOptions(templateOptions: TemplateCustomOptions) = db.getTemplateDao().updateTemplateOption(templateOptions)
 
-    suspend fun deleteMeeting(meetings: Meetings) = db.getMeetingDoa().deleteMeeing(meetings)
+    suspend fun deleteMeeting(meetings: Meetings) = db.getMeetingDoa().deleteMeeting(meetings)
     suspend fun deleteCustomOption(customOptions: CustomOptions) = db.getMeetingDoa().deleteCustomOption(customOptions)
     suspend fun deleteTemplate(templates: Templates) = db.getTemplateDao().deleteTemplate(templates)
     suspend fun deleteTemplateOption(templateOptions: TemplateCustomOptions) = db.getTemplateDao().deleteTemplateOption(templateOptions)
