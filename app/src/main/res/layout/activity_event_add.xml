@@ -75,7 +75,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="DD/MM/YY HH:MM"
+            android:hint="Rozpoczęcie wydarzenia"
+            app:helperText="DD/MM/YYYY hh:mm"
             app:endIconMode="custom"
             style="?attr/textInputOutlinedStyle">
 
@@ -93,7 +94,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:hint="DD/MM/YY HH:MM"
+                android:hint="Zakończenie wydarzenia"
+                app:helperText="DD/MM/YYYY hh:mm"
                 app:endIconMode="custom"
                 style="?attr/textInputOutlinedStyle">
 

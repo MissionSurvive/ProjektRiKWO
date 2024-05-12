@@ -29,6 +29,8 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import kotlinx.coroutines.launch
+import java.text.Format
+import java.text.SimpleDateFormat
 import java.util.Date
 
 class EventAddActivity : AppCompatActivity() {
@@ -132,7 +134,9 @@ class EventAddActivity : AppCompatActivity() {
 
                     startUnixTime = startDateSelection + hourSelection + minuteSelection
 
-                    startDateInput.setText(Date(startUnixTime).toString())
+                    val formatter: Format = SimpleDateFormat("dd/MM/yyyy HH:mm")
+                    val s: String = formatter.format(Date(startUnixTime))
+                    startDateInput.setText(s)
                     datePicker.dismiss()
                     timePicker.dismiss()
                     v.clearFocus()
@@ -197,7 +201,9 @@ class EventAddActivity : AppCompatActivity() {
 
                         endUnixTime = endDateSelection + hourSelection + minuteSelection
 
-                        endDateInput.setText(Date(endUnixTime).toString())
+                        val formatter: Format = SimpleDateFormat("dd/MM/yyyy HH:mm")
+                        val s: String = formatter.format(Date(endUnixTime))
+                        endDateInput.setText(s)
                         datePicker.dismiss()
                         timePicker.dismiss()
                         v.clearFocus()
