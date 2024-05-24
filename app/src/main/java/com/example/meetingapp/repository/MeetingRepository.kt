@@ -1,5 +1,7 @@
 package com.example.meetingapp.repository
 
+
+
 import com.example.meetingapp.CustomOptions
 import com.example.meetingapp.Meetings
 import com.example.meetingapp.TemplateCustomOptions
@@ -8,7 +10,7 @@ import com.example.meetingapp.Templates
 import com.example.meetingapp.database.MeetingDatabase
 
 class MeetingRepository(private val db: MeetingDatabase) {
-    suspend fun insertMeeting(meetings: Meetings) = db.getMeetingDoa().insertMeeting(meetings)
+    suspend fun insertMeeting(meetings: Meetings): Long = db.getMeetingDoa().insertMeeting(meetings)
     suspend fun insertCustomOption(customOptions: CustomOptions) = db.getMeetingDoa().insertCustomOption(customOptions)
     suspend fun insertTemplate(templates: Templates) = db.getTemplateDao().insertTemplate(templates)
     suspend fun insertTemplateOption(templateOptions: TemplateCustomOptions) = db.getTemplateDao().insertTemplateOption(templateOptions)
