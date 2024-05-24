@@ -10,6 +10,7 @@ import androidx.room.Update
 import com.example.meetingapp.CustomOptions
 import com.example.meetingapp.Meetings
 import com.example.meetingapp.MeetingsWithCustomOptions
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MeetingDao {
@@ -32,6 +33,9 @@ interface MeetingDao {
 
     @Query("SELECT * FROM MEETINGS ORDER BY meetingDatetime DESC")
     fun getAllMeetings(): LiveData<List<MeetingsWithCustomOptions>>
+
+    @Query("SELECT * FROM MEETINGS WHERE meetingId = :id")
+    fun getMeetingById(id: Long): Flow<MeetingsWithCustomOptions>
 
     @Query("SELECT * FROM CUSTOMOPTIONS")
     fun getAllCustomOptions(): LiveData<List<CustomOptions>>

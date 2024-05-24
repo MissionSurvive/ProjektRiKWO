@@ -23,6 +23,9 @@
         </activity>
         <activity android:name=".EventAddActivity">
         </activity>
+        <activity android:name=".SingleViewActivity">
+
+        </activity>
     </application>
 
 </manifest>

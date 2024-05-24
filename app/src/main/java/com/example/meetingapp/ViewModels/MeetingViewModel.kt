@@ -36,4 +36,6 @@ class MeetingViewModel(private val meetingRepo : MeetingRepository) : ViewModel(
         viewModelScope.launch {
             meetingRepo.updateMeeting(meeting)
         }
+
+    fun getMeetingById(id: Long) = meetingRepo.getMeeingById(id).asLiveData()
 }

@@ -38,6 +38,8 @@
         </activity>
         <activity android:name="com.example.meetingapp.EventAddActivity" >
         </activity>
+        <activity android:name="com.example.meetingapp.SingleViewActivity" >
+        </activity>
 
         <provider
             android:name="androidx.startup.InitializationProvider"

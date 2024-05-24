@@ -4,10 +4,12 @@ package com.example.meetingapp.repository
 
 import com.example.meetingapp.CustomOptions
 import com.example.meetingapp.Meetings
+import com.example.meetingapp.MeetingsWithCustomOptions
 import com.example.meetingapp.TemplateCustomOptions
 import com.example.meetingapp.TemplateWithTemplateOptions
 import com.example.meetingapp.Templates
 import com.example.meetingapp.database.MeetingDatabase
+import kotlinx.coroutines.flow.Flow
 
 class MeetingRepository(private val db: MeetingDatabase) {
     suspend fun insertMeeting(meetings: Meetings): Long = db.getMeetingDoa().insertMeeting(meetings)
@@ -29,4 +31,6 @@ class MeetingRepository(private val db: MeetingDatabase) {
     fun getAllCustomOptions() = db.getMeetingDoa().getAllCustomOptions()
     fun getAllTemplates() = db.getTemplateDao().getAllTemplates()
     fun getAllTemplatesOptions() = db.getTemplateDao().getAllTemplateOptions()
+
+    fun getMeeingById(id: Long): Flow<MeetingsWithCustomOptions> = db.getMeetingDoa().getMeetingById(id)
 }

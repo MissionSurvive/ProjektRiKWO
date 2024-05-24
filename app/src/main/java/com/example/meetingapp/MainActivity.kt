@@ -26,15 +26,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        val intent = Intent(this, EventAddActivity::class.java)
+        val intent = Intent(this, SingleViewActivity::class.java)
+        intent.putExtra("meetingId", 1L)
         startActivity(intent)
+        val intentTwo = Intent(this, EventAddActivity::class.java)
+        startActivity(intentTwo)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-        }
-        viewModel.getAllMeetings().observe(this){
-            print(it)
         }
     }
 }
