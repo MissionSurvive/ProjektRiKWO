@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         meetingDatabase = MeetingDatabase.invoke(this)
         meetingRepository = MeetingRepository(meetingDatabase)
 
-        meetingListAdapter = MeetingListAdapter(emptyList())
+        meetingListAdapter = MeetingListAdapter(emptyList(), this)
 
         calendarView.setOnDateChangeListener(OnDateChangeListener { view, year, month, dayOfMonth ->
             val calendar = Calendar.getInstance()
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         meetingRepository.getMeetingsBetweenDates(Date(startDate), Date(endDate)).observe(this) { meetings ->
             // Update the adapters with the retrieved meetings
             updateDateAdapter(meetings)
-            updateMeetingAdapter(meetings)
+            //updateMeetingAdapter(meetings)
         }
     }
     private fun updateDateAdapter(meetings: List<MeetingsWithCustomOptions>) {
@@ -80,11 +80,11 @@ class MainActivity : AppCompatActivity() {
         }.distinct()
 
         // Initialize and set the adapter for the dateRecyclerView
-        val dateAdapter = DateListAdapter(dateItems)
+        val dateAdapter = DateListAdapter(dateItems, meetings, this)
         dateRecyclerView.adapter = dateAdapter
         dateRecyclerView.layoutManager = LinearLayoutManager(this)
     }
-    private fun updateMeetingAdapter(meetings: List<MeetingsWithCustomOptions>) {
+    /*private fun updateMeetingAdapter(meetings: List<MeetingsWithCustomOptions>) {
         // Group meetings by date
         val meetingsByDate = meetings.groupBy { meeting ->
             val calendar = Calendar.getInstance()
@@ -96,7 +96,6 @@ class MainActivity : AppCompatActivity() {
         dateRecyclerView.adapter?.let { adapter ->
             for (i in 0 until adapter.itemCount) {
                 val holder = dateRecyclerView.findViewHolderForAdapterPosition(i) as? DateListAdapter.DateViewHolder
-
                 holder?.let { dateViewHolder ->
                     val day = dateViewHolder.textView.text.toString().split(" ").first().toInt()
                     val meetingsForDay = meetingsByDate[day]?.map { MeetingItem(it.meetings.meetingName) } ?: emptyList()
@@ -105,5 +104,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-    }
+    }*/
 }

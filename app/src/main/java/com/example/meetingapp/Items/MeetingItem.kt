@@ -1,3 +1,3 @@
 package com.example.meetingapp.Items
 
-data class MeetingItem(var name: String)
+data class MeetingItem(var id: Long, var name: String)
