@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.meetingapp-mergeDebugResources-44:/values-xlarge-v4/values-xlarge-v4.xml",
+            "outputFile": "com.example.meetingapp-mergeDebugResources-54:/values-xlarge-v4/values-xlarge-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\adami\\.gradle\\caches\\transforms-3\\2f25127f3700cb9a1d52d1e05402ffce\\transformed\\appcompat-1.6.1\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
+                    "source": "C:\\Users\\Bublewicz\\.gradle\\caches\\transforms-3\\aff77829410096fd11abf4dcad91ff63\\transformed\\appcompat-1.6.1\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",

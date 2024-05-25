@@ -1,5 +1,6 @@
 package com.example.meetingapp
 
+import android.content.Intent
 import android.opengl.Visibility
 import android.os.Bundle
 import android.widget.TextView
@@ -28,14 +29,14 @@ class SingleViewActivity : AppCompatActivity() {
         ).get(MeetingViewModel::class.java)
     }
 
-    var id: Long = 0
+    var id: Long = 9L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_single_view)
 
-        id = intent.getLongExtra("meetingId", 0)
+        //id = intent.getLongExtra("meetingId", 0L)
 
         val topAppBar: MaterialToolbar = findViewById(R.id.topAppBarMaterials)
         val name: TextView = findViewById(R.id.eventName)
@@ -57,9 +58,12 @@ class SingleViewActivity : AppCompatActivity() {
         topAppBar.setOnMenuItemClickListener {menuItem ->
             when (menuItem.itemId) {
                 R.id.edit -> {
-
-                    true
+                    val intent = Intent(this, EventEditActivity::class.java).apply {
+                        putExtra("EXTRA_ID", id)
                     }
+                    startActivity(intent)
+                    true
+                }
                 R.id.delete -> {
 
                     true

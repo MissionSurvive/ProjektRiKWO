@@ -243,6 +243,7 @@ class EventAddActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.done -> {
 
+
                     if (nameInput.text.isNullOrEmpty() || startUnixTime == 0L || endUnixTime == 0L || extraOptionsAdapter.isTextEmpty) {
                         Toast.makeText(this, "Wszystkie pola poza opisem wydarzenia muszą być wypełnione.", Toast.LENGTH_SHORT).show()
                     }

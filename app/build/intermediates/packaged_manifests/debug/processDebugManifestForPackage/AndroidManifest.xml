@@ -28,6 +28,10 @@
         android:testOnly="true"
         android:theme="@style/Theme.MeetingApp" >
         <activity
+            android:name="com.example.meetingapp.EventEditActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MeetingApp" />
+        <activity
             android:name="com.example.meetingapp.MainActivity"
             android:exported="true" >
             <intent-filter>
@@ -36,10 +40,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.meetingapp.EventAddActivity" >
-        </activity>
-        <activity android:name="com.example.meetingapp.SingleViewActivity" >
-        </activity>
+        <activity android:name="com.example.meetingapp.EventAddActivity" />
+        <activity android:name="com.example.meetingapp.SingleViewActivity" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
@@ -55,6 +57,13 @@
                 android:name="androidx.profileinstaller.ProfileInstallerInitializer"
                 android:value="androidx.startup" />
         </provider>
+
+        <uses-library
+            android:name="androidx.window.extensions"
+            android:required="false" />
+        <uses-library
+            android:name="androidx.window.sidecar"
+            android:required="false" />
 
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"

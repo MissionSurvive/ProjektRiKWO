@@ -2,6 +2,7 @@ R_DEF: Internal format may change without notice
 local
 color black
 color white
+dimen fab_margin
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable outline_add_black_24
@@ -37,6 +38,7 @@ id main
 id more
 id nameInputEditText
 id nameTextInputLayout
+id nav_graph
 id optionContent
 id optionName
 id startInputEditText
@@ -45,6 +47,7 @@ id text
 id topAppBar
 id topAppBarMaterials
 layout activity_event_add
+layout activity_event_edit
 layout activity_main
 layout activity_single_view
 layout event_add_dialog
@@ -54,7 +57,13 @@ menu event_add_menu
 menu single_view_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
+navigation nav_graph
 string app_name
+string first_fragment_label
+string lorem_ipsum
+string next
+string previous
+string second_fragment_label
 style Base.Theme.MeetingApp
 style Theme.MeetingApp
 xml backup_rules

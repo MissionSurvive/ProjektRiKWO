@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.meetingapp-mergeDebugResources-44:/values-ldrtl-v17/values-ldrtl-v17.xml",
+            "outputFile": "com.example.meetingapp-mergeDebugResources-54:/values-ldrtl-v17/values-ldrtl-v17.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\adami\\.gradle\\caches\\transforms-3\\9cff247ad6086e623b2b8da7ba10684a\\transformed\\material-1.11.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
+                    "source": "C:\\Users\\Bublewicz\\.gradle\\caches\\transforms-3\\313c11ce8172f0787c9792450f34509c\\transformed\\material-1.11.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
