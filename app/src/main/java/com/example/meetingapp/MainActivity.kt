@@ -10,52 +10,100 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.meetingapp.Adapters.DateListAdapter
+import com.example.meetingapp.Adapters.MeetingListAdapter
+import com.example.meetingapp.Converters.Converters
 import com.example.meetingapp.Items.DateItem
+import com.example.meetingapp.Items.MeetingItem
+import com.example.meetingapp.database.MeetingDatabase
+import com.example.meetingapp.repository.MeetingRepository
 import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     private lateinit var calendarView: CalendarView
     private lateinit var dateRecyclerView: RecyclerView
+    private lateinit var meetingRepository: MeetingRepository
+    private lateinit var meetingDatabase: MeetingDatabase
+    private lateinit var meetingListAdapter: MeetingListAdapter
+    val converters = Converters()
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_month_view)
 
         calendarView = findViewById(R.id.calendarView)
         dateRecyclerView = findViewById(R.id.meeting_list)
+        meetingDatabase = MeetingDatabase.invoke(this)
+        meetingRepository = MeetingRepository(meetingDatabase)
+
+        meetingListAdapter = MeetingListAdapter(emptyList())
 
         calendarView.setOnDateChangeListener(OnDateChangeListener { view, year, month, dayOfMonth ->
             val calendar = Calendar.getInstance()
-            val firstDayOfMonth = calendar.getActualMinimum(Calendar.DAY_OF_MONTH)
-            val firstDate = "$firstDayOfMonth/${month + 1}/$year"
+            calendar.set(year, month, dayOfMonth)
 
-            // Get the last day of the month
-            val lastDayOfMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
-            val lastDate = "$lastDayOfMonth/${month + 1}/$year"
 
-            println("First day of the month: $firstDate")
-            println("Last day of the month: $lastDate")
+
+            val startDate = calendar.timeInMillis
+            val endCalendar = Calendar.getInstance()
+            endCalendar.set(year, month, calendar.getActualMaximum(Calendar.DAY_OF_MONTH))
+            val endDate = endCalendar.timeInMillis
+            println(startDate)
+            println(endDate)
+
+            observeMeetingsBetweenDates(startDate, endDate)
         })
-
-        // Initialize lists
-        val dateItems = listOf(
-            DateItem(10, "May"),
-            DateItem(11, "May"),
-            DateItem(12, "May"),
-            DateItem(13, "May"),
-            DateItem(14, "May"),
-        )
-
-        // Initialize and set adapter for the dateRecyclerView
-        val dateAdapter = DateListAdapter(dateItems)
-        dateRecyclerView.adapter = dateAdapter
-        dateRecyclerView.layoutManager = LinearLayoutManager(this)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+    }
+
+    private fun observeMeetingsBetweenDates(startDate: Long, endDate: Long) {
+        meetingRepository.getMeetingsBetweenDates(Date(startDate), Date(endDate)).observe(this) { meetings ->
+            // Update the adapters with the retrieved meetings
+            updateDateAdapter(meetings)
+            updateMeetingAdapter(meetings)
+        }
+    }
+    private fun updateDateAdapter(meetings: List<MeetingsWithCustomOptions>) {
+        // Create a list of DateItem objects from the meetings
+        val dateItems = meetings.map { meeting ->
+            val calendar = Calendar.getInstance()
+            calendar.timeInMillis = converters.fromDateToLong(meeting.meetings.meetingDatetime)!!
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+            val month = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault())
+            DateItem(day, month)
+        }.distinct()
+
+        // Initialize and set the adapter for the dateRecyclerView
+        val dateAdapter = DateListAdapter(dateItems)
+        dateRecyclerView.adapter = dateAdapter
+        dateRecyclerView.layoutManager = LinearLayoutManager(this)
+    }
+    private fun updateMeetingAdapter(meetings: List<MeetingsWithCustomOptions>) {
+        // Group meetings by date
+        val meetingsByDate = meetings.groupBy { meeting ->
+            val calendar = Calendar.getInstance()
+            calendar.timeInMillis = converters.fromDateToLong(meeting.meetings.meetingDatetime)!!
+            calendar.get(Calendar.DAY_OF_MONTH)
+        }
+
+        // Update the MeetingListAdapter for each DateViewHolder
+        dateRecyclerView.adapter?.let { adapter ->
+            for (i in 0 until adapter.itemCount) {
+                val holder = dateRecyclerView.findViewHolderForAdapterPosition(i) as? DateListAdapter.DateViewHolder
+
+                holder?.let { dateViewHolder ->
+                    val day = dateViewHolder.textView.text.toString().split(" ").first().toInt()
+                    val meetingsForDay = meetingsByDate[day]?.map { MeetingItem(it.meetings.meetingName) } ?: emptyList()
+                    val meetingAdapter = MeetingListAdapter(meetingsForDay)
+                    dateViewHolder.meetingRecyclerView.adapter = meetingAdapter
+                }
+            }
         }
     }
 }

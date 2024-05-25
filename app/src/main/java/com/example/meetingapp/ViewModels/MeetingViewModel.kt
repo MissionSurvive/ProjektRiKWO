@@ -1,6 +1,7 @@
 package com.example.meetingapp.ViewModels
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asFlow
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.meetingapp.CustomOptions
@@ -10,6 +11,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import java.util.Date
 
 class MeetingViewModel(private val meetingRepo : MeetingRepository) : ViewModel() {
 
@@ -38,4 +40,6 @@ class MeetingViewModel(private val meetingRepo : MeetingRepository) : ViewModel(
         }
 
     fun getMeetingById(id: Long) = meetingRepo.getMeeingById(id).asLiveData()
+
+    fun getMeetingsBetweenDates(startDate: Date, endDate: Date) = meetingRepo.getMeetingsBetweenDates(startDate, endDate).asFlow()
 }
