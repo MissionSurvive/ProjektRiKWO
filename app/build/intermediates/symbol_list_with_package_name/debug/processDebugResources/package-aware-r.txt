@@ -2078,6 +2078,7 @@ color primary_text_default_material_dark
 color primary_text_default_material_light
 color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
+color purple
 color ripple_material_dark
 color ripple_material_light
 color secondary_text_default_material_dark
@@ -3083,6 +3084,7 @@ drawable outline_done_black_24
 drawable outline_edit_black_24
 drawable outline_menu_black_24
 drawable outline_more_vert_black_24
+drawable rounded_layout_background
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -3166,6 +3168,7 @@ id animateToEnd
 id animateToStart
 id antiClockwise
 id anticipate
+id appBarLayout
 id arc
 id asConfigured
 id async
@@ -3186,6 +3189,7 @@ id bounceEnd
 id bounceStart
 id buttonPanel
 id cache_measures
+id calendarView
 id callMeasure
 id cancel_button
 id carryVelocity
@@ -3373,6 +3377,8 @@ id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
 id matrix
+id meeting_list
+id meeting_list_item
 id message
 id middle
 id mini
@@ -3417,6 +3423,7 @@ id navigation_bar_item_labels_group
 id navigation_bar_item_large_label_view
 id navigation_bar_item_small_label_view
 id navigation_header_container
+id nestedScrollView
 id never
 id neverCompleteToEnd
 id neverCompleteToStart
@@ -3728,6 +3735,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_event_add
 layout activity_main
+layout activity_month_view
 layout activity_single_view
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -3769,6 +3777,8 @@ layout material_time_input
 layout material_timepicker
 layout material_timepicker_dialog
 layout material_timepicker_textinput_display
+layout meetings_list_item_view
+layout meetings_list_view
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title
@@ -3813,6 +3823,7 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 menu event_add_menu
 menu single_view_menu
+menu top_app_bar
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description

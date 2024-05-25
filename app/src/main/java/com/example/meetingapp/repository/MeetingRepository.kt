@@ -10,6 +10,7 @@ import com.example.meetingapp.TemplateWithTemplateOptions
 import com.example.meetingapp.Templates
 import com.example.meetingapp.database.MeetingDatabase
 import kotlinx.coroutines.flow.Flow
+import java.util.Date
 
 class MeetingRepository(private val db: MeetingDatabase) {
     suspend fun insertMeeting(meetings: Meetings): Long = db.getMeetingDoa().insertMeeting(meetings)
@@ -33,4 +34,6 @@ class MeetingRepository(private val db: MeetingDatabase) {
     fun getAllTemplatesOptions() = db.getTemplateDao().getAllTemplateOptions()
 
     fun getMeeingById(id: Long): Flow<MeetingsWithCustomOptions> = db.getMeetingDoa().getMeetingById(id)
+
+    fun getMeetingsBetweenDates(startDate: Date, endDate: Date) = db.getMeetingDoa().getMeetingsBetweenDates(startDate, endDate)
 }

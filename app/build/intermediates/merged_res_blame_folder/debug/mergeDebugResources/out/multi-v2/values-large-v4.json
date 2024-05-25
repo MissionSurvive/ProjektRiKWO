@@ -4,7 +4,7 @@
             "outputFile": "com.example.meetingapp-mergeDebugResources-44:/values-large-v4/values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\adami\\.gradle\\caches\\transforms-3\\9cff247ad6086e623b2b8da7ba10684a\\transformed\\material-1.11.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\Kacper\\.gradle\\caches\\transforms-3\\9cff247ad6086e623b2b8da7ba10684a\\transformed\\material-1.11.0\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\adami\\.gradle\\caches\\transforms-3\\2f25127f3700cb9a1d52d1e05402ffce\\transformed\\appcompat-1.6.1\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\Kacper\\.gradle\\caches\\transforms-3\\2f25127f3700cb9a1d52d1e05402ffce\\transformed\\appcompat-1.6.1\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",

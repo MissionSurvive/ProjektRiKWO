@@ -4,7 +4,7 @@
             "outputFile": "com.example.meetingapp-mergeDebugResources-44:/values-w320dp-land-v13/values-w320dp-land-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\adami\\.gradle\\caches\\transforms-3\\9cff247ad6086e623b2b8da7ba10684a\\transformed\\material-1.11.0\\res\\values-w320dp-land-v13\\values-w320dp-land-v13.xml",
+                    "source": "C:\\Users\\Kacper\\.gradle\\caches\\transforms-3\\9cff247ad6086e623b2b8da7ba10684a\\transformed\\material-1.11.0\\res\\values-w320dp-land-v13\\values-w320dp-land-v13.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
