@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml:2:1-28:12
+ADDED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml:2:1-31:12
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\adami\.gradle\caches\transforms-3\9cff247ad6086e623b2b8da7ba10684a\transformed\material-1.11.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\adami\.gradle\caches\transforms-3\7136fbf5baad5bb30080522ae04088e7\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\adami\.gradle\caches\transforms-3\d4bb2f822240246639eae918faa0a4d5\transformed\appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
@@ -71,8 +71,8 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\adami\.gradle\caches\transform
 	xmlns:android
 		ADDED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml:5:5-26:19
-INJECTED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml:5:5-26:19
+ADDED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml:5:5-29:19
+INJECTED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml:5:5-29:19
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\adami\.gradle\caches\transforms-3\9cff247ad6086e623b2b8da7ba10684a\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\adami\.gradle\caches\transforms-3\9cff247ad6086e623b2b8da7ba10684a\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\adami\.gradle\caches\transforms-3\7136fbf5baad5bb30080522ae04088e7\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -133,6 +133,10 @@ activity#com.example.meetingapp.EventAddActivity
 ADDED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml:24:9-25:20
 	android:name
 		ADDED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml:24:19-51
+activity#com.example.meetingapp.SingleViewActivity
+ADDED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml:26:9-28:20
+	android:name
+		ADDED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml:26:19-53
 uses-sdk
 INJECTED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\adami\dev\Projekt-RiKWO\app\src\main\AndroidManifest.xml

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/optionName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:paddingTop="8dp"
+        android:text="Niestandardowe pole nazwa"
+        style="@style/TextAppearance.Material3.TitleSmall"/>
+
+    <TextView
+        android:id="@+id/optionContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:paddingTop="8dp"
+        android:text="Niestandardowe pole treść"
+        style="@style/TextAppearance.Material3.BodyMedium"/>
+
+</LinearLayout>
