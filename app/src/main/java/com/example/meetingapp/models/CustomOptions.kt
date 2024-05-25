@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 data class CustomOptions(
     @PrimaryKey(autoGenerate = true) val optionId: Int,
     val optionKey: String,
-    val optionValue: String,
-    val meetingId: Int
+    var optionValue: String,
+    var meetingId: Int
 )

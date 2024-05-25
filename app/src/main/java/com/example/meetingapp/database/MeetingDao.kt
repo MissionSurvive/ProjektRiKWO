@@ -10,11 +10,12 @@ import androidx.room.Update
 import com.example.meetingapp.CustomOptions
 import com.example.meetingapp.Meetings
 import com.example.meetingapp.MeetingsWithCustomOptions
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MeetingDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertMeeting(meetings: Meetings)
+    suspend fun insertMeeting(meetings: Meetings): Long
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertCustomOption(customOptions: CustomOptions)
@@ -25,13 +26,16 @@ interface MeetingDao {
     suspend fun updateCustomOption(customOptions: CustomOptions)
 
     @Delete
-    suspend fun deleteMeeing(meetings: Meetings)
+    suspend fun deleteMeeting(meetings: Meetings)
 
     @Delete
     suspend fun deleteCustomOption(customOptions: CustomOptions)
 
     @Query("SELECT * FROM MEETINGS ORDER BY meetingDatetime DESC")
     fun getAllMeetings(): LiveData<List<MeetingsWithCustomOptions>>
+
+    @Query("SELECT * FROM MEETINGS WHERE meetingId = :id")
+    fun getMeetingById(id: Long): Flow<MeetingsWithCustomOptions>
 
     @Query("SELECT * FROM CUSTOMOPTIONS")
     fun getAllCustomOptions(): LiveData<List<CustomOptions>>

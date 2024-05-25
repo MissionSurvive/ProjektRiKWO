@@ -9,7 +9,7 @@ import java.util.Date
 data class Meetings(
     @PrimaryKey(autoGenerate = true) val meetingId: Int,
     val meetingName: String,
-    val meetingDescription: String,
+    val meetingDescription: String?,
     val meetingDatetime: Date,
     val meetingDuration: Int,
     val meetingNotification: Boolean
