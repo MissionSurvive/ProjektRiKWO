@@ -56,16 +56,11 @@ class MainActivity : AppCompatActivity() {
 
         calendarView.setOnDateChangeListener(OnDateChangeListener { view, year, month, dayOfMonth ->
             val calendar = Calendar.getInstance()
-            calendar.set(year, month, dayOfMonth)
-
-
-
+            calendar.set(year, month, 1)
             val startDate = calendar.timeInMillis
             val endCalendar = Calendar.getInstance()
             endCalendar.set(year, month, calendar.getActualMaximum(Calendar.DAY_OF_MONTH))
-            val endDate = endCalendar.timeInMillis
-            println(startDate)
-            println(endDate)
+            val endDate = endCalendar.timeInMillis + 86400000
 
             observeMeetingsBetweenDates(startDate, endDate)
         })
