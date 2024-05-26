@@ -16,6 +16,7 @@ import com.example.meetingapp.adapters.ExtraOptionsTextListAdapter
 import com.example.meetingapp.database.MeetingDatabase
 import com.example.meetingapp.repository.MeetingRepository
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.text.Format
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -29,14 +30,14 @@ class SingleViewActivity : AppCompatActivity() {
         ).get(MeetingViewModel::class.java)
     }
 
-    var id: Long = 13L
+    var id: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_single_view)
 
-        //id = intent.getLongExtra("meetingId", 0L)
+        id = intent.getLongExtra("meetingId", 0)
 
         val topAppBar: MaterialToolbar = findViewById(R.id.topAppBarMaterials)
         val name: TextView = findViewById(R.id.eventName)
@@ -95,6 +96,33 @@ class SingleViewActivity : AppCompatActivity() {
                 }
                 else {
                     adapter.submitList(it.options)
+                }
+
+
+                topAppBar.setOnMenuItemClickListener {menuItem ->
+                    when (menuItem.itemId) {
+                        R.id.edit -> {
+
+                            true
+                        }
+                        R.id.delete -> {
+                            MaterialAlertDialogBuilder(this)
+                                .setTitle("Usuwanie wydarzenia")
+                                .setMessage("Czy jesteś pewien, że chcesz usunąć to wydarzenie?")
+                                .setNegativeButton("Nie") { dialog, which ->
+                                    dialog.dismiss()
+                                }
+                                .setPositiveButton("Tak") { dialog, which ->
+                                    viewModel.deleteCustomOptions(meeting.options)
+                                    viewModel.deleteMeeting(meeting.meetings)
+                                    dialog.dismiss()
+                                    finish()
+                                }
+                                .show()
+                            true
+                        }
+                        else -> false
+                    }
                 }
             }
         })
