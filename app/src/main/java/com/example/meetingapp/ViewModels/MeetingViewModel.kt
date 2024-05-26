@@ -39,6 +39,10 @@ class MeetingViewModel(private val meetingRepo : MeetingRepository) : ViewModel(
             meetingRepo.updateMeeting(meeting)
         }
 
+    fun deleteCustomOptions(customOptions: List<CustomOptions>) = viewModelScope.launch {
+        meetingRepo.deleteCustomOptions(customOptions)
+    }
+
     fun getMeetingById(id: Long) = meetingRepo.getMeeingById(id).asLiveData()
 
     fun getMeetingsBetweenDates(startDate: Date, endDate: Date) = meetingRepo.getMeetingsBetweenDates(startDate, endDate).asFlow()

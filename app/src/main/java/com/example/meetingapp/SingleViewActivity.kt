@@ -15,6 +15,7 @@ import com.example.meetingapp.adapters.ExtraOptionsTextListAdapter
 import com.example.meetingapp.database.MeetingDatabase
 import com.example.meetingapp.repository.MeetingRepository
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.text.Format
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -54,20 +55,6 @@ class SingleViewActivity : AppCompatActivity() {
             finish()
         }
 
-        topAppBar.setOnMenuItemClickListener {menuItem ->
-            when (menuItem.itemId) {
-                R.id.edit -> {
-
-                    true
-                    }
-                R.id.delete -> {
-
-                    true
-                }
-                else -> false
-            }
-        }
-
         viewModel.getMeetingById(id).observe(this, Observer {meeting ->
             meeting?.let {
 
@@ -91,6 +78,33 @@ class SingleViewActivity : AppCompatActivity() {
                 }
                 else {
                     adapter.submitList(it.options)
+                }
+
+
+                topAppBar.setOnMenuItemClickListener {menuItem ->
+                    when (menuItem.itemId) {
+                        R.id.edit -> {
+
+                            true
+                        }
+                        R.id.delete -> {
+                            MaterialAlertDialogBuilder(this)
+                                .setTitle("Usuwanie wydarzenia")
+                                .setMessage("Czy jesteś pewien, że chcesz usunąć to wydarzenie?")
+                                .setNegativeButton("Nie") { dialog, which ->
+                                    dialog.dismiss()
+                                }
+                                .setPositiveButton("Tak") { dialog, which ->
+                                    viewModel.deleteCustomOptions(meeting.options)
+                                    viewModel.deleteMeeting(meeting.meetings)
+                                    dialog.dismiss()
+                                    finish()
+                                }
+                                .show()
+                            true
+                        }
+                        else -> false
+                    }
                 }
             }
         })
