@@ -298,6 +298,7 @@ class EventEditActivity : AppCompatActivity() {
 
                         viewModel.getMeetingById(id).observe(this, Observer { meeting ->
                             meeting?.let {
+                                viewModel.deleteCustomOptions(meeting.options)
                                 viewModel.deleteMeeting(meeting.meetings)
                             }
                         })

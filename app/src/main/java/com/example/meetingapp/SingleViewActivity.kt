@@ -56,22 +56,6 @@ class SingleViewActivity : AppCompatActivity() {
             finish()
         }
 
-        topAppBar.setOnMenuItemClickListener {menuItem ->
-            when (menuItem.itemId) {
-                R.id.edit -> {
-                    val intent = Intent(this, EventEditActivity::class.java).apply {
-                        putExtra("EXTRA_ID", id)
-                    }
-                    startActivity(intent)
-                    true
-                }
-                R.id.delete -> {
-
-                    true
-                }
-                else -> false
-            }
-        }
 
         viewModel.getMeetingById(id).observe(this, Observer {meeting ->
             meeting?.let {
@@ -102,7 +86,10 @@ class SingleViewActivity : AppCompatActivity() {
                 topAppBar.setOnMenuItemClickListener {menuItem ->
                     when (menuItem.itemId) {
                         R.id.edit -> {
-
+                            val intent = Intent(this, EventEditActivity::class.java).apply {
+                                putExtra("EXTRA_ID", id)
+                            }
+                            startActivity(intent)
                             true
                         }
                         R.id.delete -> {
