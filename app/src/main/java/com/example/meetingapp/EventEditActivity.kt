@@ -85,7 +85,8 @@ class EventEditActivity : AppCompatActivity() {
                 startDateInput.setText(start)
                 endDateInput.setText(end)
                 checkBox.isChecked = it.meetings.meetingNotification
-                println(it.options)
+                startUnixTime = it.meetings.meetingDatetime.time
+                endUnixTime = startUnixTime + it.meetings.meetingDuration
                 if (it.options.isEmpty()) {
 
                 }
@@ -270,7 +271,6 @@ class EventEditActivity : AppCompatActivity() {
         topAppBar.setOnMenuItemClickListener {menuItem ->
             when (menuItem.itemId) {
                 R.id.done -> {
-
                     if (nameInput.text.isNullOrEmpty() || startUnixTime == 0L || endUnixTime == 0L || extraOptionsAdapter.isTextEmpty) {
                         Toast.makeText(this, "Wszystkie pola poza opisem wydarzenia muszą być wypełnione.", Toast.LENGTH_SHORT).show()
                     }
@@ -296,6 +296,11 @@ class EventEditActivity : AppCompatActivity() {
                             )
                         }
 
+                        viewModel.getMeetingById(id).observe(this, Observer { meeting ->
+                            meeting?.let {
+                                viewModel.deleteMeeting(meeting.meetings)
+                            }
+                        })
                         lifecycleScope.launch {
                             viewModel.addMeeting(meeting).await()
                             val meetingId = viewModel.returnedId
