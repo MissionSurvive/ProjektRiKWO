@@ -32,6 +32,9 @@ interface MeetingDao {
     @Delete
     suspend fun deleteCustomOption(customOptions: CustomOptions)
 
+    @Delete
+    suspend fun deleteCustomOptions(customOptions: List<CustomOptions>)
+
     @Query("SELECT * FROM MEETINGS ORDER BY meetingDatetime DESC")
     fun getAllMeetings(): LiveData<List<MeetingsWithCustomOptions>>
 
