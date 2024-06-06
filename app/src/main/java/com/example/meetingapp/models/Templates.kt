@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "templates")
 data class Templates(
     @PrimaryKey(autoGenerate = true) val templateId: Int,
-    @ColumnInfo(name = "meeting_name") val templateName: String,
-    @ColumnInfo(name = "meeting_name") val templateMeetingName: String,
-    @ColumnInfo(name = "meeting_description") val templateDescription: String
+    val templateName: String,
+    val templateMeetingName: String,
+    val templateDescription: String
 )

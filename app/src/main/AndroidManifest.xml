@@ -13,6 +13,10 @@
         android:theme="@style/Theme.MeetingApp"
         tools:targetApi="31">
         <activity
+            android:name=".EventEditActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MeetingApp" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -21,6 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".EventAddActivity" />
+        <activity android:name=".SingleViewActivity" />
     </application>
 
 </manifest>
